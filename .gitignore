@@ -1,5 +1,5 @@
 # Sub git wiki ignore
-kubernetes-onprem.wiki
+kubernetes-homeserver.wiki
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
