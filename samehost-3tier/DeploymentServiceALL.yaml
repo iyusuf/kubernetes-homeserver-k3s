@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: py-backend
+  namespace: samehost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: py-backend
+  template:
+    metadata:
+      labels:
+        app: py-backend
+    spec:
+      containers:
+      - name: py-backend
+        image: iyusuf/py-backend:v2  # Update the image version
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: py-backend
+  namespace: samehost
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8000
+    targetPort: 8000
+  selector:
+    app: py-backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: js-frontend
+  namespace: samehost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: js-frontend
+  template:
+    metadata:
+      labels:
+        app: js-frontend
+    spec:
+      containers:
+      - name: js-frontend
+        image: iyusuf/js-frontend:v1
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: js-frontend
+  namespace: samehost
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+    targetPort: 80
+  selector:
+    app: js-frontend
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  namespace: samehost
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: py-backend
+            port:
+              number: 8000
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: js-frontend
+            port:
+              number: 8080  # Ensure it matches the service definition
