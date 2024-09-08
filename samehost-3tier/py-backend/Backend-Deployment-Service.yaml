@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: py-backend
+  namespace: samehost-3tier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: py-backend
+  template:
+    metadata:
+      labels:
+        app: py-backend
+    spec:
+      containers:
+      - name: py-backend
+        image: iyusuf/py-backend:v1
+        ports:
+        - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: py-backend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8000
+    targetPort: 8000
+  selector:
+    app: py-backend
