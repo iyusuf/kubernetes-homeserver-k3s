@@ -6,7 +6,7 @@
     <title>FastAPI Frontend</title>
     <script>
         async function fetchPersons() {
-            const response = await fetch('/persons');
+            const response = await fetch('/api/persons');
             const data = await response.json();
             let result = '';
             data.forEach(person => {
@@ -19,7 +19,7 @@
             const firstName = document.getElementById('first_name').value;
             const lastName = document.getElementById('last_name').value;
 
-            await fetch('/persons', {
+            await fetch('/api/persons', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -32,7 +32,7 @@
     </script>
 </head>
 <body>
-    <h1>Persons List</h1>
+    <h1>Persons List 2</h1>
     <ul id="persons"></ul>
 
     <h2>Add a Person</h2>

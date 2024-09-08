@@ -15,12 +15,12 @@ persons_db = [
 ]
 
 # Get all persons
-@app.get("/persons")
+@app.get("/api/persons")
 async def get_persons():
     return persons_db
 
 # Add a new person
-@app.post("/persons")
+@app.post("/api/persons")
 async def add_person(person: Person):
     persons_db.append(person.dict())
     return {"message": "Person added successfully"}
