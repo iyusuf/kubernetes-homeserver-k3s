@@ -7,15 +7,15 @@ docker push iyusuf/web-server1-image:latest
 kubectl apply -f deployment.yaml
 
 # If you need to update container in the pod
-kubectl rollout restart deployment web-server1 -n barebone-html
+kubectl rollout restart deployment web-server1 -n tinyweb3tier
 
 
 
 # To update pod with newer container image
 ## First find the deployment name
-kubectl get deployments.apps -n barebone-html 
+kubectl get deployments.apps -n tinyweb3tier 
 ## Then restart the deployment
-kubectl rollout restart deployment web-server2 -n barebone-html
+kubectl rollout restart deployment web-server2 -n tinyweb3tier
 
 
 

@@ -7,7 +7,7 @@
 <script>
   async function fetchData() {
     try {
-//      const response = await fetch('http://fastapi-backend-service.barebone-html.svc.cluster.local:8080/persons/');
+//      const response = await fetch('http://fastapi-backend-service.tinyweb3tier.svc.cluster.local:8080/persons/');
 const response = await fetch('http://192.168.0.107:30099/persons/');
       if (!response.ok) {
         throw new Error('Network response was not ok ' + response.statusText);

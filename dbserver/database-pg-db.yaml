@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pg-db
-  namespace: barebone-html
+  namespace: tinyweb3tier
 spec:
   replicas: 1
   selector:
@@ -30,7 +30,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: pg-db-service
-  namespace: barebone-html
+  namespace: tinyweb3tier
 spec:
   selector:
     app: pg-db

@@ -32,7 +32,7 @@ docker tag iyusuf/js-frontend iyusuf/js-frontend:v1
 docker run -d -p 80:80 --name jsf iyusuf/js-frontend:v1
 
 - 
-kubectl rollout restart deployment web-server2 -n barebone-html
+kubectl rollout restart deployment web-server2 -n tinyweb3tier
 
 
 
