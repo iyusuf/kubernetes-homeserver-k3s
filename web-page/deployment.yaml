@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-server1
-  namespace: barebone-html
+  namespace: tinyweb3tier
 spec:
   replicas: 1
   selector:
@@ -24,7 +24,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-server1-service
-  namespace: barebone-html
+  namespace: tinyweb3tier
 spec:
   selector:
     app: web-server1
