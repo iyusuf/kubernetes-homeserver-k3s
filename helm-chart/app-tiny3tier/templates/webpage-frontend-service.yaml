@@ -10,5 +10,4 @@ spec:
     - protocol: TCP
       port: {{ .Values.webServer.servicePort }}
       targetPort: {{ .Values.webServer.containerPort }}
-      nodePort: {{ .Values.webServer.nodePort }}
-  type: NodePort
+  type: ClusterIP

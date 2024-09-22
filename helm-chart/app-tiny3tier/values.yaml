@@ -29,20 +29,22 @@ fastapiBackend:
     tag: latest
     pullPolicy: Always
   serviceName: fastapi-backend-service
-  servicePort: 8080
-  nodePort: 30099
-
+  servicePort: 8000
 
 # Frontend
 webServer:
-  name: web-server1
-  containerName: web-server1
+  name: js-frontend
+  containerName: js-frontend
   replicas: 1
   containerPort: 80
   image:
-    repository: iyusuf/web-server1-image
-    tag: latest
+    repository: iyusuf/js-frontend
+    tag: v2
     pullPolicy: Always
-  serviceName: web-server1-service
-  servicePort: 80
-  nodePort: 30001
+  serviceName: js-frontend
+  servicePort: 8080
+
+# Ingress
+ingress:
+  name: app-ingress
+
