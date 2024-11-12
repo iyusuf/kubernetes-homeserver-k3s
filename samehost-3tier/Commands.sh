@@ -28,8 +28,9 @@ kubectl apply -f Backend-Deployment-Service.yaml
 docker build -t iyusuf/js-frontend -f Dockerfile .
 - Docker Tag
 docker tag iyusuf/js-frontend iyusuf/js-frontend:v1
+docker push iyusuf/js-frontend:v1
 - Docker run to test locally
-docker run -d -p 80:80 --name jsf iyusuf/js-frontend:v1
+docker run -d -p 8099:80 --name jsf iyusuf/js-frontend:v1
 
 - 
 kubectl rollout restart deployment web-server2 -n tinyweb3tier
